@@ -171,7 +171,7 @@ int main(int argc, char **argv)
 		}
 		unsigned int run = 0;
 		errno = 0;
-		fscanf(f, "%d", &run);
+		fscanf(f, "%u", &run);
 		if (0 != errno)
 		{
 			fprintf(stderr, "Unable to read run file\n");

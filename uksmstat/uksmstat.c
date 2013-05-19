@@ -146,7 +146,7 @@ int main(int argc, char **argv)
 	}
 
 	// find out page size
-	unsigned int page_size = sysconf(_SC_PAGESIZE);
+	long page_size = sysconf(_SC_PAGESIZE);
 	if (-1 == page_size)
 	{
 		fprintf(stderr, "Unable to get page size\n");

@@ -54,4 +54,4 @@ Typical usage: `sudo uksmctl -a`.
 Distribution and Contribution
 -----------------------------
 
-uksmstat is provided under terms and conditions of GPLv3+. See file "COPYING" for details. Mail any suggestions, bugreports and comments to me: pfactum@gmail.com.
+uksmstat is provided under terms and conditions of GPLv3+. See file "COPYING" for details. Mail any suggestions, bugreports and comments to me: oleksandr@natalenko.name.

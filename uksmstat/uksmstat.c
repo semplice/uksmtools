@@ -1,6 +1,6 @@
 /*
     uksmstat — small tool to show UKSM statistics
-    Copyright © 2012 Oleksandr Natalenko aka post-factum <pfactum@gmail.com>
+    Copyright © 2012–2013 Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@
 void show_help()
 {
 	fprintf(stdout, "uksmstat - small tool to show UKSM statistics\n");
-	fprintf(stdout, "© Oleksandr Natalenko aka post-factum, 2012\n");
+	fprintf(stdout, "© Oleksandr Natalenko aka post-factum, 2012–2013\n");
 	fprintf(stdout, "Distributed under terms and conditions of GPLv3+. See COPYING for details.\n");
 	fprintf(stdout, "Usage: uksmstat <options>\n");
 	fprintf(stdout, "Options:\n");

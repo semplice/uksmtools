@@ -16,6 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <getopt.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,16 +30,18 @@
 
 void show_help()
 {
-	fprintf(stdout, "uksmctl - small tool to control UKSM statistics\n");
-	fprintf(stdout, "© Oleksandr Natalenko aka post-factum, 2012–2013\n");
-	fprintf(stdout, "Distributed under terms and conditions of GPLv3+. See COPYING for details.\n");
 	fprintf(stdout, "Usage: uksmctl <options>\n");
+	fprintf(stdout, "\n");
 	fprintf(stdout, "Options:\n");
-	fprintf(stdout, "\t-a: activate UKSM\n");
-	fprintf(stdout, "\t-d: deactivate UKSM\n");
-	fprintf(stdout, "\t-s: toggle UKSM state\n");
-	fprintf(stdout, "\t-v: be verbose (up to -vv)\n");
-	fprintf(stdout, "\t-h: show this help\n");
+	fprintf(stdout, "  -a, --activate             activate UKSM\n");
+	fprintf(stdout, "  -d, --deactivate           deactivate UKSM\n");
+	fprintf(stdout, "  -t, --toggle               toggle UKSM\n");
+	fprintf(stdout, "  -v, --verbose              be verbose (-vv to be more verbose)\n");
+	fprintf(stdout, "  -h, --help                 show this help\n");
+	fprintf(stdout, "\n");
+	fprintf(stdout, "Example:\n");
+	fprintf(stdout, "\n");
+	fprintf(stdout, "sudo uksmctl -a\n");
 	exit(EX_OK);
 }
 
@@ -63,8 +66,16 @@ int main(int argc, char **argv)
 		exit(EX_OSFILE);
 	}
 
+    struct option longopts[] = {
+        {"activate",   0, NULL, 'a'},
+        {"deactivate", 0, NULL, 'd'},
+        {"toggle",     0, NULL, 't'},
+        {"verbose",    0, NULL, 'v'},
+        {"help",       0, NULL, 'h'},
+        {0, 0, 0, 0}};
+
 	// parse cmdline options
-	while (-1 != (opts = getopt(argc, argv, "adsvh")))
+	while (-1 != (opts = getopt_long(argc, argv, "adtvh", longopts, NULL)))
 	{
 		switch (opts)
 		{
@@ -74,7 +85,7 @@ int main(int argc, char **argv)
 			case 'd':
 				deactivate = 1;
 				break;
-			case 's':
+			case 't':
 				toggle = 1;
 				break;
 			case 'v':

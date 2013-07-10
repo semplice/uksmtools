@@ -16,6 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <getopt.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,21 +32,23 @@
 
 void show_help()
 {
-	fprintf(stdout, "uksmstat - small tool to show UKSM statistics\n");
-	fprintf(stdout, "© Oleksandr Natalenko aka post-factum, 2012–2013\n");
-	fprintf(stdout, "Distributed under terms and conditions of GPLv3+. See COPYING for details.\n");
 	fprintf(stdout, "Usage: uksmstat <options>\n");
+	fprintf(stdout, "\n");
 	fprintf(stdout, "Options:\n");
-	fprintf(stdout, "\t-a: show whether UKSM is active\n");
-	fprintf(stdout, "\t-u: show unshared memory\n");
-	fprintf(stdout, "\t-s: show saved memory\n");
-	fprintf(stdout, "\t-c: show scanned memory\n");
-	fprintf(stdout, "\t-k: use kibibytes\n");
-	fprintf(stdout, "\t-m: use mebibytes\n");
-	fprintf(stdout, "\t-g: use gibibytes\n");
-	fprintf(stdout, "\t-p: increase precision (specify -pppp… for better precision)\n");
-	fprintf(stdout, "\t-v: be verbose (up to -vv)\n");
-	fprintf(stdout, "\t-h: show this help\n");
+	fprintf(stdout, "  -a, --active             show whether UKSM is active or not\n");
+	fprintf(stdout, "  -u, --unshared           show unshared memory\n");
+	fprintf(stdout, "  -s, --shared             show shared memory\n");
+	fprintf(stdout, "  -c, --scanned            show scanned memory\n");
+	fprintf(stdout, "  -k, --kibibytes          use kibibytes\n");
+	fprintf(stdout, "  -m, --mebibytes          use mebibytes\n");
+	fprintf(stdout, "  -g, --gibibytes          use gibibytes\n");
+	fprintf(stdout, "  -p, --precision          increase precision (-pppp… for more precision)\n");
+	fprintf(stdout, "  -v, --verbose            be verbose (-vv to be more verbose)\n");
+	fprintf(stdout, "  -h, --help               show this help\n");
+	fprintf(stdout, "\n");
+	fprintf(stdout, "Example:\n");
+	fprintf(stdout, "\n");
+	fprintf(stdout, "uksmstat -sppv\n");
 	exit(EX_OK);
 }
 
@@ -65,8 +68,21 @@ int main(int argc, char **argv)
 		exit(EX_OSFILE);
 	}
 
+    struct option longopts[] = {
+        {"active",    0, NULL, 'a'},
+        {"unshared",  0, NULL, 'u'},
+        {"shared",    0, NULL, 's'},
+        {"scanned",   0, NULL, 'c'},
+        {"kibibytes", 0, NULL, 'k'},
+        {"mebibytes", 0, NULL, 'm'},
+        {"gibibytes", 0, NULL, 'g'},
+        {"precision", 0, NULL, 'p'},
+        {"verbose",   0, NULL, 'v'},
+        {"help",      0, NULL, 'h'},
+        {0, 0, 0, 0}};
+
 	// parse cmdline options
-	while (-1 != (opts = getopt(argc, argv, "ausckmgpvh")))
+	while (-1 != (opts = getopt_long(argc, argv, "ausckmgpvh", longopts, NULL)))
 	{
 		switch (opts)
 		{

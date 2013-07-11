@@ -45,7 +45,7 @@ Typical usage: `uksmstat -sppv`.
 
 * -a — activates UKSM
 * -d — deactivates UKSM
-* -s — toggles UKSM state
+* -t — toggles UKSM state
 * -v — be verbose (up to -vv)
 * -h — shows this help	
 

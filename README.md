@@ -1,4 +1,4 @@
-uksmstat
+uksmtools
 ========
 
 Simple tool to monitor and control UKSM.
@@ -13,7 +13,7 @@ Compiling
 
 ### Compilation
 
-Enter **uksmstat** directory and type `make`.
+Enter **uksmtools** directory and type `make`.
 
 ### Installation
 

@@ -13,4 +13,4 @@
 	dh $@
 
 override_dh_auto_install:
-	make DESTDIR=debian/uksmtools PREFIX=/usr install
+	make DESTDIR=$(CURDIR)/debian/uksmtools PREFIX=/usr install

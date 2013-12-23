@@ -9,7 +9,7 @@ Vcs-Git: git://github.com/semplice/uksmtools.git
 Vcs-Browser: https://github.com/semplice/zramcfg
 
 Package: uksmtools
-Architecture: all
+Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: simple tools to monitor and control UKSM
  uksmtools contains simple tools to monitor and control UKSM.
